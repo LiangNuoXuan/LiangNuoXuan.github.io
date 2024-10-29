@@ -14,6 +14,17 @@
     text-decoration: none;
 }
 </style>
+<script>
+    if (localStorage.getItem('pageViews')) {
+        var views = parseInt(localStorage.getItem('pageViews')) + 1;
+        localStorage.setItem('pageViews', views.toString());
+    } else {
+        localStorage.setItem('pageViews', '1');
+    }
+    console.log('当前页面访问量（本地存储）: ', localStorage.getItem('pageViews'));
+    var fwl = (localStorage.getItem('pageViews'));
+    document.getElementById("FWL"), innerHeight = fwl;
+</script>
 <body style="background-image: url(./../DM_20241008202512_001.jpg);">
     <table border="0" style="width: 100%;">
         <tr>
@@ -46,7 +57,7 @@
                                     <td>
                                         文章:2<br>
                                         入驻时间:24/10/9<br>
-                                        访问流量:x<br>
+                                        访问流量:<span id="FWL">x</span><br>
                                     </td>
                                 </tr>
                                 <tr>
