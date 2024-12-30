@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>诺愃-我们</title>
+    <link rel="stylesheet" href="./../css/index.css">
+</head>
+
+<style>
+    #touxiang {
+        display: inline-block;
+        margin-top: 10%;
+        margin-left: 13%;
+    }
+
+    #fang {
+        width: 300px;
+        height: 100px;
+        border-radius: 15px;
+        display: inline-block;
+        border-style: solid;
+        border-width: 1px;
+        border-color: #ccc;
+        margin-left: 2%;
+        margin-top: 1%;
+        background-color: white;
+        box-shadow: 5px 5px 5px #ccc;
+    }
+
+    #xiaofangkuai {
+        color: rgb(98, 98, 98);
+        margin-top: 8%;
+        margin-left: 14%;
+    }
+
+    #xfkFont {
+        font-size: 1.5em;
+    }
+
+    .FontColor {
+        transition: all .3s ease-in-out;
+        text-shadow: 1px 1px 10px #00000021;
+    }
+
+    .aixin {
+        filter: drop-shadow(0px 0px 3px #F24235);
+        animation: scale 1s infinite;
+    }
+
+
+    @keyframes scale {
+        from {
+            transform: scale(1.2);
+            filter: drop-shadow(0px 0px 10px #F24235);
+
+        }
+
+        to {
+            transform: scale(1);
+            filter: drop-shadow(0px 0px 3px #F24235);
+        }
+    }
+</style>
+
+<script src="./../lodash.min.js"></script>
+
+<body>
+    <div style="width: 1520px;"> <!--锁-->
+        <!-- 导航栏 -->
+        <div>
+            <table style="width: 100%;position: fixed;background: rgba(255,255,255,0.7);top: 0;margin-left: -0.6%;">
+                <tr>
+                    <td style="width: 10%;"></td>
+                    <td>LOVE</td>
+                    <td style="width: 51%;"></td>
+                    <td>喜欢</td>
+                </tr>
+            </table>
+        </div>
+        <!-- 主题图片 -->
+        <div id="chuizhi" style="background-image: url(./../jpg/R-C.jpg);background-size: 100%;height: 400px;margin-top: -0.6%;
+        margin-left: -0.6%;display: flex;align-items: center;justify-content: center;">
+            <!-- 头像 -->
+            <div style="height: 200px;width: 600px;background: rgba(255,255,255,0.7);border-radius: 20px;
+            text-align: center;border-radius: 20px;">
+                <!-- 男头 -->
+                <div id="touxiang" style="margin-left: 2%;">
+                    <img src="./../jpg/xyl.png" alt="男头" style="width: 70px;">
+                    <br>
+                    Nan
+                </div>
+                <!-- 爱心 -->
+                <div id="touxiang">
+                    <img src="./../jpg/xin.png" class="aixin" alt="爱心" style="width: 80px;">
+                </div>
+                <!-- 女头 -->
+                <div id="touxiang">
+                    <img src="./../jpg/xyl.png" alt="女头" style="width: 70px;">
+                    <br>
+                    Nv
+                </div>
+            </div>
+        </div>
+        <!-- 下半部分背景图 -->
+        <div style="background-image: url(./../jpg/fang.png);margin-left: -0.6%;">
+            <div style="text-align: center;font-size: 1.2em;">
+                <span class="FontColor">这</span>
+                <span class="FontColor">是</span>
+                <span class="FontColor">我</span>
+                <span class="FontColor">们</span>
+                <span class="FontColor">一</span>
+                <span class="FontColor">起</span>
+                <span class="FontColor">走</span>
+                <span class="FontColor">过</span>
+                <span class="FontColor">的</span>
+                <script>
+                    const FontColor = document.querySelectorAll(".FontColor")
+                    const FontColorArr = [ColorS(), ColorS(), ColorS(), ColorS(), ColorS(), ColorS(), ColorS(), ColorS(), ColorS()]
+                    function ColorS() {
+                        const r = _.random(1, 255);
+                        const g = _.random(1, 255);
+                        const b = _.random(1, 255);
+                        return "rgb(" + r + "," + g + "," + b + ")";
+                    }
+
+                    setInterval(() => {
+                        console.log(FontColor.length);
+                        if (FontColorArr.length != FontColor.length) {
+                            FontColorArr.unshift(ColorS())
+                        } else {
+                            FontColorArr.pop()
+                        }
+
+                        FontColor.forEach((item, index) => item.style.color = FontColorArr[index]);
+                    }, 300)
+                </script>
+            </div>
+            <!-- 时间 -->
+            <div style="text-align: center;">
+                <h2 id="time">
+                    <script>
+                        // 设定时间
+                        const setTime = new Date('2024-01-01 12:00:00');
+
+                        function calculateTimeDifference() {
+                            // 获取当前时间
+                            const kTime = new Date();
+
+                            // 计算总毫秒数差值
+                            const dims = kTime - setTime;
+
+                            // 计算相差的秒数
+                            const dis = Math.floor(dims / 1000);
+                            // 计算相差的分钟数
+                            const minutes = Math.floor(dis / 60);
+                            const rs = dis % 60;
+                            // 计算相差的小时数
+                            const hours = Math.floor(minutes / 60);
+                            const rm = minutes % 60;
+                            // 计算相差的天数
+                            const days = Math.floor(hours / 24);
+                            const rh = hours % 24;
+
+                            return days + "天" + rh + "小时" + rm + "分钟" + rs + "秒";
+                        }
+
+                        function updateTime() {
+                            document.getElementById("time").innerHTML = calculateTimeDifference();
+                        }
+                        updateTime();
+                        // 每隔1秒更新一次差值显示，实现实时刷新
+                        setInterval(updateTime, 1000);
+                    </script>
+                </h2>
+            </div>
+            <!-- 三个方块 -->
+            <div>
+                <div id="fang" style="margin-left: 18%;">
+                    <a href="">
+                        <div id="xiaofangkuai" style="height: 100%;">
+                            <div style="display: inline-block;">
+                                <img src="./../jpg/xinxin.png" style="width: 50px;">
+                            </div>
+                            <div style="display: inline-block;">
+                                <span id="xfkFont">点点滴滴</span>
+                                <br>
+                                有人愿意听你碎碎...
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div id="fang">
+                    <a href="">
+                        <div id="xiaofangkuai" style="height: 100%;">
+                            <div style="display: inline-block;">
+                                <img src="./../jpg/xinxin.png" style="width: 50px;">
+                            </div>
+                            <div style="display: inline-block;">
+                                <span id="xfkFont">留言板</span>
+                                <br>
+                                在这里写下我们的...
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div id="fang">
+                    <a href="">
+                        <div id="xiaofangkuai" style="height: 100%;">
+                            <div style="display: inline-block;">
+                                <img src="./../jpg/xinxin.png" style="width: 50px;">
+                            </div>
+                            <div style="display: inline-block;">
+                                <span id="xfkFont">关于我们</span>
+                                <br>
+                                我们是如何认识的...
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- 二个方块 -->
+            <div>
+                <div id="fang" style="margin-left: 30%;">
+                    <a href="">
+                        <div id="xiaofangkuai">
+                            <div style="display: inline-block;">
+                                <img src="./../jpg/xinxin.png" style="width: 50px;">
+                            </div>
+                            <div style="display: inline-block;">
+                                <span id="xfkFont">Love Photo</span>
+                                <br>
+                                相册
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div id="fang">
+                    <a href="">
+                        <div id="xiaofangkuai">
+                            <div style="display: inline-block;">
+                                <img src="./../jpg/xinxin.png" style="width: 50px;">
+                            </div>
+                            <div style="display: inline-block;">
+                                <span id="xfkFont">Love List</span>
+                                <br>
+                                约定
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <br>
+            <br>
+            <!-- 页脚 -->
+            <div style="text-align: center;margin-top: 2%;">
+                小作坊模仿
+            </div>
+            <div style="text-align: center;">
+                <a href="https://lovey.kikiw.cn" target="_blank">
+                    源地址
+                </a>
+                -
+                <a href="https://gitee.com/kiCode111/like-girl-v5.2.0" target="_blank">
+                    Gitee
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
