@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="UTF-8">
+    <title>诺愃</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<style>
+    /* 初始化 */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        min-height: 100dvh;
+        --background: #000;
+        color: var(--background);
+    }
+
+
+
+    /* 超链接 */
+    a {
+        color: var(--background);
+        text-decoration: none;
+    }
+
+    /* 按钮 */
+
+    #anjz {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #anjz a {
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        align-content: center;
+        height: 100px;
+        width: 60%;
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #bgh {
+        height: 400px;
+    }
+
+    /* 颜色切换 */
+    .btn {
+        position: absolute;
+        right: 20px;
+        top: 30px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        border-radius: 5px;
+        background: var(--background);
+        align-content: center;
+        cursor: pointer;
+        user-select: none;
+        /* 初始化 */
+        color: #fff;
+    }
+
+    @media (max-width:780px) {
+        #bgh {
+            height: 300px;
+        }
+
+        #anjz a {
+            width: 70%;
+            height: 80px;
+        }
+    }
+</style>
+
+<script>
+    // 创建XMLHttpRequest对象实例
+    const wz = new XMLHttpRequest();
+    // 设置请求方式为GET，以及请求的URL（这里假设网站返回数据的接口地址）
+    wz.open('GET', 'https://v1.hitokoto.cn/?c=k', true);
+    // 监听请求状态变化，当请求完成且响应状态码为200（表示成功）时进行处理
+    wz.onreadystatechange = function () {
+        if (wz.readyState == 4 && wz.status == 200) {
+            // 获取服务器返回的响应文本（JSON格式字符串）
+            const rTwz = wz.responseText;
+            // 将JSON字符串解析为JavaScript对象
+            const wzdeta = JSON.parse(rTwz);
+            // 获取id的值
+            document.getElementById("jsi").innerHTML = wzdeta.hitokoto;
+        };
+    };
+    // 发送请求
+    wz.send();
+</script>
+<!-- 主题图片 -->
+<!-- https://api.mtyqx.cn/api/random.php -->
+
+<body style="background:url(http://www.98qy.com/sjbz/api.php) no-repeat center/cover;">
+    <!-- 颜色切换 -->
+    <div class="btn">黑</div>
+    <script>
+        let boolean = true
+        document.querySelector('.btn').addEventListener('click', (e) => {
+            document.body.style.setProperty('--background', boolean ? "#fff" : "#000")
+            e.target.style.color = !boolean ? "#fff" : "#000"
+            e.target.innerHTML = boolean ? "白" : "黑"
+            boolean = !boolean
+        })
+    </script>
+    <!--主题文字-->
+    <div id="bgh" style="display: flex;align-items: center;justify-content: center;">
+        <h1 id="jsi"></h1>
+        <a style="margin-top: 5%;" href="https://hitokoto.cn/" target="_blank">一言</a>
+    </div>
+    <!-- 跳转链接 -->
+    <div id="anjz">
+        <!-- 方块按钮 -->
+        <a target="_blank" href="./htmls/jinXiang.html">
+            镜像网站
+        </a>
+        <br>
+        <a target="_blank" href="./htmls/love.html" target="_blank">
+            爱心代码
+        </a>
+        <br>
+    </div>
+    <div style="text-align: center;">
+        <a target="_blank" href="https://github.com/LiangNuoXuan">NuoXuan</a>-制作
+        &nbsp;
+        <a target="_blank" href="https://github.com/LiangNuoXuan/LiangNuoXuan.github.io">Github</a>开源网站
+    </div>
+
+</body>
+
+</html>
