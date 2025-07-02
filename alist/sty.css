@@ -31,12 +31,12 @@ body.hope-ui-light {
 /*主列表白天模式透明*/
 .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
   background-color: rgba(255, 255, 255, 0) !important;
-  backdrop-filter: blur(10px); /* 毛玻璃效果的强度 */
+  backdrop-filter: blur(3px); /* 毛玻璃效果的强度 */
 }
 /*主列表夜间模式透明*/
 .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-iigjoxS-css {
   background-color: rgb(0 0 0 / 0%) !important;
-  backdrop-filter: blur(10px); /* 毛玻璃效果的强度 */
+  backdrop-filter: blur(3px); /* 毛玻璃效果的强度 */
 }
 
 /*右下角侧边栏按钮透明 第一个是白天 第二个是夜间*/
